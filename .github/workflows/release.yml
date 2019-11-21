@@ -11,7 +11,10 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - run: |
-        git merge origin/staging origin/master
-        git merge origin/edge origin/master
+        git fetch
+        git merge staging origin/master
+        git merge edge origin/master
+        git push origin staging
+        git push origin edge
 
 
