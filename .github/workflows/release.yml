@@ -13,7 +13,6 @@ jobs:
       with:
         ref: edge
     - run: |
-        git merge origin/master
-        git push origin edge
+        git merge origin/master && git push origin edge
 
 
