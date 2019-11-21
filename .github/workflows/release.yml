@@ -10,13 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+      with:
+        ref: edge
     - run: |
-        git fetch
-        git checkout edge
-        git checkout staging
-        git merge staging origin/master
-        git merge edge origin/master
-        git push origin staging
+        git merge origin/master
         git push origin edge
 
 
