@@ -12,13 +12,13 @@ jobs:
       - uses: actions/checkout@v1
         with:
           ref: master
-      - name: Merge origin
+      - name: Make release
         run: |
           # grep text of most recent commit message
-          if [ git log -1 --pretty=%B | grep major ]
+          if [ git log -1 --pretty=%B | grep "major release" ]
           then
             npm version major
-          elif [ git log -1 --pretty=%B | grep minor ]
+          elif [ git log -1 --pretty=%B | grep "minor release" ]
           then
             npm version minor
           else
@@ -28,7 +28,6 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: edge
   backmerge:
     runs-on: ubuntu-latest
     steps:
