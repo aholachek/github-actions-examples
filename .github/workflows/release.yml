@@ -9,8 +9,7 @@ jobs:
   backmerge:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout edge
-        uses: actions/checkout@v1
+      - uses: actions/checkout@v1
         with:
           ref: edge
       - name: merge origin
