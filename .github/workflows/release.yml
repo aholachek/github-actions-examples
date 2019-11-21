@@ -13,7 +13,7 @@ jobs:
         with:
           ref: master
       - name: Make release
-        run: ./make_release.sh
+        run: .github/workflows/make_release.sh
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
