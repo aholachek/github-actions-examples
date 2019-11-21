@@ -14,7 +14,16 @@ jobs:
           ref: master
       - name: Merge origin
         run: |
-          npm version patch
+          # grep text of most recent commit message
+          if [ git log -1 --pretty=%B | grep major ]
+          then
+            npm version major
+          elif [ git log -1 --pretty=%B | grep minor ]
+          then
+            npm version minor
+          else
+            npm version patch
+          fi
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
