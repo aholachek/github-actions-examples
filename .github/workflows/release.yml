@@ -9,14 +9,14 @@ jobs:
   backmerge:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/github-script
-      with:
-        github-token: ${{secrets.GITHUB_TOKEN}}
     - uses: actions/checkout@v1
       with:
         ref: edge
     - run: git merge origin/master
-    - run: git push origin edge
-
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: edge
 
 
