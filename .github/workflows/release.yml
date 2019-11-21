@@ -1,0 +1,8 @@
+on:
+  push:
+    branches:
+      - master
+
+name: Create Release
+
+
