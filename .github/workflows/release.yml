@@ -6,6 +6,28 @@ on:
       - master
 
 jobs:
+  make_release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          ref: master
+      - name: Make release
+        run: |
+          # grep text of most recent commit message
+          if [ git log -1 --pretty=%B | grep "major release" ]
+          then
+            npm version major
+          elif [ git log -1 --pretty=%B | grep "minor release" ]
+          then
+            npm version minor
+          else
+            npm version patch
+          fi
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
   backmerge:
     runs-on: ubuntu-latest
     steps:
