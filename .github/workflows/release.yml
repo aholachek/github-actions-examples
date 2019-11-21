@@ -12,9 +12,7 @@ jobs:
     - uses: actions/checkout@v1
       with:
         ref: edge
-    - run: git config --global user.email "aholachek@stashinvest.com"
-    - run: git config --global user.name "Alex"
-    - run: echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+        github-token: ${{secrets.GITHUB_TOKEN}}
     - run: git merge origin/master
     - run: git push origin edge
 
