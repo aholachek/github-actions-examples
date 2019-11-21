@@ -1,0 +1,17 @@
+name: Merge to master
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  backmerge:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - run: |
+        git merge staging master
+        git merge edge master
+
+
