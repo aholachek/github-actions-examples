@@ -1,5 +1,4 @@
 # Tiny test repo for github actions
-Mostly relevant to frontend JS projects.
 
 ## Workflows that are currently work(flow)ing
 1. Backmerge `edge` and `staging` branches after successful merge to `master`
