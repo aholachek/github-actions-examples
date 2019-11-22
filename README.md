@@ -4,10 +4,10 @@
 ## Working
 1. Backmerge `edge` and `staging` branches after successful merge to `master`
 2. Automate release bump (patch is default, can also specify "major" and "minor" in commit message) on merge to master
+3. Run tests for prs
 
 ## To do
-1. Run tests for prs
-2. Publish release to npm
+1. Publish release to npm
 
 ## Resources
 
