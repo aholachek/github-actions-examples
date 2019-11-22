@@ -10,7 +10,8 @@
 1.  Fork repo
 2.  Checkout staging locally and commit some changes
 3.  Make a pr from staging ==> master on github
-4.  In github interface for the PR, rename commit to something like [MASTER RELEASE] or [MINOR RELEASE] (the default release on merge will be a patch otherwise)
+4.  In github interface for the PR, rename commit to something like [MASTER RELEASE] or [MINOR RELEASE] (the default release on merge will be a patch otherwise):
+![example of commit message](./commit-message.png)
 5.  Once the tests pass, merge the pr into master
 6.  Navigate to the workflow actions tag to see the release + backmerge into staging and edge in progress.
 
