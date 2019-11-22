@@ -1,6 +1,6 @@
 {
   "name": "actions-test",
-  "version": "4.0.2",
+  "version": "5.0.0",
   "private": true,
   "dependencies": {
     "react": "^16.12.0",
