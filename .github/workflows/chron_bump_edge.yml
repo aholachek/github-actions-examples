@@ -1,0 +1,21 @@
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+
+jobs:
+  merge_edge_into_staging:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          ref: staging
+      - name: Merge origin
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git merge origin/edge
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: staging
