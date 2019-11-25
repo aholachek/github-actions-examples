@@ -1,9 +1,8 @@
-# Tiny test repo for github actions
 
 ## Workflows that are currently work(flow)ing
 1. Backmerge `edge` and `staging` branches after successful merge to `master`
 2. Automate release bump (patch is default, can also specify "major" and "minor" in commit message) on merge to master
-3. Run tests for prs & cache node_modules between builds
+3. Run tests for prs & cache `node_modules` between builds
 
 ## How to test
 1.  Fork repo
