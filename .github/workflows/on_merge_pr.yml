@@ -1,0 +1,13 @@
+name: PR Merged
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  make_release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: "jessfraz/branch-cleanup-action@master"
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
