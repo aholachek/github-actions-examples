@@ -1,7 +1,8 @@
 name: PR Merged
 
 on:
-  pull_request
+  pull_request:
+    types: [closed]
 
 jobs:
   make_release:
