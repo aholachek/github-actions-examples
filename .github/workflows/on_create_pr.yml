@@ -19,7 +19,7 @@ jobs:
             ${{ runner.os }}-yarn-
         id: cache-hit
       - name: Debug by logging cache
-        run: echo "::debug Yarn cache hit: ${{steps.cache-hit.outputs.dir}}"
+        run: echo "::debug Yarn cache hit ${{steps.cache-hit.outputs.dir}}"
       - uses: actions/setup-node@v1
         with:
           node-version: "10.x"
