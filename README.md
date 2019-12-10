@@ -1,7 +1,7 @@
 
 ## Workflows that are currently work(flow)ing
 1. Backmerge `edge` and `staging` branches after successful merge to `master`
-2. Automate release bump (patch is default, can also specify "major" and "minor" in commit message) on merge to master
+2. Automate release bump (patch is default, can also specify "major" and "minor" in commit message) by committing a release to any prs made to master.
 3. Run tests for prs & cache `node_modules` between builds
 
 ## How to test
@@ -10,9 +10,10 @@
 3.  Make a pr from staging ==> master on github
 4.  In github interface for the PR, rename commit to something like [MASTER RELEASE] or [MINOR RELEASE] (the default release on merge will be a patch otherwise):
 ![example of commit message](./commit-message.png)
-5.  Once the tests pass, merge the pr into master
-6.  Navigate to the workflow actions tag to see the release + backmerge into staging and edge in progress.
-7. Confirm that edge, staging and master all have the new release commmit.
+5. You should see a release version commit added to the list of commits for the pr.
+6.  Once the tests pass, merge the pr into master
+7.  Navigate to the workflow actions tag to see the release + backmerge into staging and edge in progress.
+8. Confirm that edge, staging and master all have the new release commmit.
 
 ## Helpful resources
 
