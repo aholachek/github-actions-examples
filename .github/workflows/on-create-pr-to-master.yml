@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+        with:
+            ref: staging
       - run: .github/workflows/make_release.sh
       - uses: ad-m/github-push-action@master
         with:
