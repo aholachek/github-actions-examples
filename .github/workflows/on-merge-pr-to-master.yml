@@ -16,7 +16,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git merge -r origin/master
+          git merge origin/master
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
@@ -32,7 +32,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git merge -r origin/master
+          git merge origin/master
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
