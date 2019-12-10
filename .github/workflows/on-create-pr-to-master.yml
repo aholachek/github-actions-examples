@@ -1,0 +1,19 @@
+name: PR Made To Master
+
+on:
+  pull_request:
+    types:
+      - opened
+    branches:
+      - master
+
+jobs:
+  make_release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: .github/workflows/make_release.sh
+      - uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.head_ref }}
