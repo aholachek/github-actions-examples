@@ -1,0 +1,24 @@
+name: PR Merged To Master
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  backmerge_master_into_edge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          ref: edge
+      - name: Merge origin
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git merge origin/master
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: edge
