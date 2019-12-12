@@ -18,10 +18,12 @@ jobs:
       - uses: actions/checkout@v1
         with:
           ref: staging
+      - name: Make release
+        env:
+          BRANCH_NAME: ${{ toJson(github).head_ref }}
       - run: |
-          BRANCH_NAME=${{github.head_ref }}
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "release-action@github.com"
+          git config --local user.name "GitHub Release Action"
           npm version (echo $BRANCH_NAME | grep -o [0-9\.] | xargs |  sed 's/ //g')
       - uses: ad-m/github-push-action@master
         with:
