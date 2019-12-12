@@ -1,4 +1,4 @@
-name: PR Merged To Master
+name: Backmerge after PR merged to master
 
 on:
   push:

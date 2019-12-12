@@ -1,4 +1,4 @@
-name: PR Merged To Master
+name: Publish package when pr merged to master
 
 on:
   push:
