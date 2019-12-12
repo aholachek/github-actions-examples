@@ -6,7 +6,11 @@ on:
       - master
 
 jobs:
-  # todo: add github package registry publish here
+  publish_package:
+    runs-on: ubuntu-latest
+    steps:
+          - uses: actions/checkout@v1
+          
   backmerge_master_into_edge:
     runs-on: ubuntu-latest
     steps:
