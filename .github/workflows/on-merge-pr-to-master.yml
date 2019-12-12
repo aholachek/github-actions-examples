@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-# todo: add github package registry publish here
+  # todo: add github package registry publish here
   backmerge_master_into_edge:
     runs-on: ubuntu-latest
     steps:
@@ -17,7 +17,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git merge origin/master
+          git pull -r origin/master
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
@@ -33,7 +33,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git merge origin/master
+          git pull -r origin/master
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
