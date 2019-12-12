@@ -21,7 +21,7 @@ jobs:
         run: |
           git config --local user.email "release-action@github.com"
           git config --local user.name "GitHub Release Action"
-          npm version (echo $BRANCH_NAME | grep -o [0-9\.] | xargs |  sed 's/ //g')
+          npm version $(echo $BRANCH_NAME | grep -o [0-9\.] | xargs |  sed 's/ //g')
 
       - uses: ad-m/github-push-action@master
         with:
