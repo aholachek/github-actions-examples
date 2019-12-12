@@ -1,0 +1,5 @@
+1. QA reading version name from branch name
+2. Figure out yarn module caching
+  1. Is yarn included by default?
+  2. Does it work with npm?
+3. Publish to github package registry on merge to master

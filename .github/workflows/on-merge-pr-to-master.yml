@@ -6,17 +6,23 @@ on:
       - master
 
 jobs:
+
+  publish_package:
+    runs-on: ubuntu-latest
+    steps:
+          - uses: actions/checkout@v1
+          - run: npm publish
   backmerge_master_into_edge:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
         with:
           ref: edge
-      - name: Merge origin/master into edge
+      - name: Merge master into edge
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git merge origin/master
+          git pull -r origin master
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
@@ -28,11 +34,11 @@ jobs:
       - uses: actions/checkout@v1
         with:
           ref: edge
-      - name: Merge origin/master into staging
+      - name: Merge origin master into staging
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git merge origin/master
+          git pull -r origin master
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
