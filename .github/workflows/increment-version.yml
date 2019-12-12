@@ -1,0 +1,52 @@
+name: Run tests and increment version
+
+on:
+  pull_request:
+    types:
+      - opened
+    branches:
+      - master
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "10.x"
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - run: yarn install
+      - name: test
+        env:
+          CI: true
+
+  increment_version:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          ref: staging
+
+      - name: Make release
+        env:
+          BRANCH_NAME: ${{ toJson(github).head_ref }}
+        run: |
+          git config --local user.email "release-action@github.com"
+          git config --local user.name "GitHub Release Action"
+          npm version $(echo $BRANCH_NAME | grep -o [0-9\.] | xargs |  sed 's/ //g')
+      - uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: staging
