@@ -7,11 +7,6 @@ on:
 
 jobs:
 
-  publish_package:
-    runs-on: ubuntu-latest
-    steps:
-          - uses: actions/checkout@v1
-          - run: npm publish
   backmerge_master_into_edge:
     runs-on: ubuntu-latest
     steps:
@@ -28,6 +23,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: edge
+
   backmerge_master_into_staging:
     runs-on: ubuntu-latest
     steps:

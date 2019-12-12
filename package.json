@@ -1,6 +1,6 @@
 {
-  "name": "github-actions-examples-test",
-  "version": "6.0.8-release",
+  "name": "@aholachek/github-actions-examples",
+  "version": "6.0.8",
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -10,8 +10,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:ci": "CI=true react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aholachek/github-actions-examples.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -27,5 +33,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/aholachek/github-actions-examples/issues"
+  },
+  "homepage": "https://github.com/aholachek/github-actions-examples#readme",
+  "main": "index.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
 }
