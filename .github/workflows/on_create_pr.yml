@@ -25,4 +25,7 @@ jobs:
             ${{ runner.os }}-yarn-
         id: cache-hit
       - run: yarn install
-      - run: npm run test:ci
+      - name: test
+        env:
+          CI: true
+      - run: npm run test
