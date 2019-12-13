@@ -1,6 +1,6 @@
 # sanity test to check for any issues with building the app not caught by tests
 
-name: Build project on pr creation
+name: Build project on PR creation
 
 on: pull_request
 
