@@ -1,13 +1,6 @@
 name: Run tests on pr creation
 
-on:
-  pull_request:
-    types:
-      - opened
-      - edited
-      - reopened
-    branches-ignore:
-      - master
+on: pull_request
 
 jobs:
   run-tests:

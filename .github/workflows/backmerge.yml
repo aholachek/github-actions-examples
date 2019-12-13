@@ -1,7 +1,8 @@
 name: Backmerge after PR merged to master
 
 on:
-  push:
+  pull_request:
+    types: [closed]
     branches:
       - master
 
@@ -9,6 +10,7 @@ jobs:
 
   backmerge_master_into_edge:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged
     steps:
       - uses: actions/checkout@v1
         with:
@@ -26,6 +28,7 @@ jobs:
 
   backmerge_master_into_staging:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged
     steps:
       - uses: actions/checkout@v1
         with:
