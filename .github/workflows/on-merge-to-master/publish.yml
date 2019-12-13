@@ -1,3 +1,6 @@
+# this requires some config in the package.json, specifically the
+# "repository" and "publishConfig" keys
+
 name: Publish package
 
 on:

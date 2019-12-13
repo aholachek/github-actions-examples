@@ -17,7 +17,8 @@
     "url": "git+https://github.com/aholachek/github-actions-examples.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/",
+    "scope": "aholachek"
   },
   "eslintConfig": {
     "extends": "react-app"
