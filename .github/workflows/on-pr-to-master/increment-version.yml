@@ -4,13 +4,12 @@ name: Increment Version on Master PR
 
 on:
   pull_request:
-    types: [opened]
+    types:
+      - opened
     branches:
       - master
-
 jobs:
   increment_version:
-    if: github.event.pull_request.merged
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
