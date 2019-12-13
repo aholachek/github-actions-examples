@@ -1,15 +1,12 @@
-name: Publish package when pr merged to master
+# sanity test to check for any issues with building the app not caught by tests
 
-on:
-  pull_request:
-    types: [closed]
-    branches:
-      - master
+name: Build project on pr creation
+
+on: pull_request
 
 jobs:
-  publish_package:
+  run-tests:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
@@ -26,8 +23,4 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - run: yarn install
-      - name: build
-        run: yarn run build
-      - name: publish
-        # use --access public if the package is scoped and you want to make it publically available
-        run: npm publish --access public
+      - run: yarn run build
