@@ -9,26 +9,7 @@ on:
     branches:
       - master
 jobs:
-  increment_version:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Make release
-        env:
-          BRANCH_NAME: ${{ github.head_ref }}
-        run: |
-          git config --local user.email "github-version-action@github.com"
-          git config --local user.name "GitHub Version Action"
-          npm version $(echo $BRANCH_NAME | grep -o [0-9\.] | xargs |  sed 's/ //g')
-
-      - name: Push to branch
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.head_ref }}
-  # workaround to get tests to display in PR UI
   run-tests:
-    needs: increment_version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -50,3 +31,21 @@ jobs:
         env:
           CI: true
         run: npm run test
+  increment_version:
+    needs: run-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Make release
+        env:
+          BRANCH_NAME: ${{ github.head_ref }}
+        run: |
+          git config --local user.email "github-version-action@github.com"
+          git config --local user.name "GitHub Version Action"
+          npm version $(echo $BRANCH_NAME | grep -o [0-9\.] | xargs |  sed 's/ //g')
+
+      - name: Push to branch
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.head_ref }}
