@@ -1,0 +1,29 @@
+# sanity test to check for any issues with building the app not caught by tests
+
+name: Increment Version on Master PR
+
+on:
+  pull_request:
+    types: [opened]
+    branches:
+      - master
+
+jobs:
+  increment_version:
+    if: github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Make release
+        env:
+          BRANCH_NAME: ${{ toJson(github).head_ref }}
+        run: |
+          git config --local user.email "release-action@github.com"
+          git config --local user.name "GitHub Release Action"
+          npm version $(echo $BRANCH_NAME | grep -o [0-9\.] | xargs |  sed 's/ //g')
+
+      - name: Push to branch
+      - uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.head_ref }}
