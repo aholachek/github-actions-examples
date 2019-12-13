@@ -18,7 +18,8 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/aholachek",
-    "scope": "aholachek"
+    "scope": "@aholachek",
+    "access": "public"
   },
   "eslintConfig": {
     "extends": "react-app"
