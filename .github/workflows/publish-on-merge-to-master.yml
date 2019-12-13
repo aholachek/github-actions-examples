@@ -32,7 +32,6 @@ jobs:
       - name: build
         run: yarn run build
       - name: publish
-        # use --access public if the package is scoped and you want to make it publically available
-        run: npm publish --access public
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ github.token }}
