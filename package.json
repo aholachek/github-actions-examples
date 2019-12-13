@@ -14,10 +14,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/aholachek/github-actions-examples.git"
+    "url": "git://github.com/aholachek/github-actions-examples.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/",
+    "registry": "https://npm.pkg.github.com/aholachek",
     "scope": "aholachek"
   },
   "eslintConfig": {
