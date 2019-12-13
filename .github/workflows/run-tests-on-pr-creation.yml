@@ -1,6 +1,8 @@
-name: Run tests on pr creation
+name: Run tests on PR creation and update
 
-on: pull_request
+on:
+  pull_request
+
 
 jobs:
   run-tests:
