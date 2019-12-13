@@ -35,4 +35,4 @@ jobs:
         # use --access public if the package is scoped and you want to make it publically available
         run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{github.token}}
+          NODE_AUTH_TOKEN: ${{ github.token }}
