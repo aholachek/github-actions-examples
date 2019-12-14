@@ -18,8 +18,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@aholachek"
       - name: Get yarn cache
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
