@@ -6,7 +6,7 @@ jobs:
   merge_edge_into_staging:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         with:
           ref: staging
       - name: Merge edge
@@ -15,4 +15,8 @@ jobs:
           git config --local user.name "GitHub Action"
           git merge origin/edge
       - name: Push changes
-        run: git push origin staging
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $remote_repo="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push $remote_repo staging

@@ -12,7 +12,7 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: "10.x"
@@ -35,7 +35,7 @@ jobs:
     needs: run-tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Make release
         env:
           BRANCH_NAME: ${{ github.head_ref }}
@@ -45,6 +45,6 @@ jobs:
           npm version $(echo $BRANCH_NAME | grep -o [0-9\.] | xargs |  sed 's/ //g')
 
       - name: Push to branch
-        env:
-          BRANCH_NAME: ${{ github.head_ref }}
-        run: git push origin $BRANCH_NAME
+        run: |
+          REMOTE_REPO="https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          git push $REMOTE_REPO HEAD:${{ github.head_ref }}
