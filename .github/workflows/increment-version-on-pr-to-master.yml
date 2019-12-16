@@ -47,4 +47,7 @@ jobs:
       - name: Push to branch
         env:
           BRANCH_NAME: ${{ github.head_ref }}
-        run: git push origin $BRANCH_NAME
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $remote_repo="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${$GITHUB_REPOSITORY}.git"
+          git push $remote_repo $BRANCH_NAME
