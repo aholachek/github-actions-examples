@@ -46,5 +46,5 @@ jobs:
 
       - name: Push to branch
         run: |
-          $remote_repo="https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ GITHUB_REPOSITORY }}.git"
+          $remote_repo="https://github.com/${{ GITHUB_REPOSITORY }}.git"
           git push $remote_repo ${{ github.head_ref }}
