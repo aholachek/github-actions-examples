@@ -47,4 +47,4 @@ jobs:
       - name: Push to branch
         env:
           BRANCH_NAME: ${{ github.head_ref }}
-      - run: git push origin $BRANCH_NAME
+        run: git push origin $BRANCH_NAME
