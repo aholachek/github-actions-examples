@@ -21,7 +21,12 @@ jobs:
           git config --local user.name "GitHub Action"
           git pull -r origin master
       - name: Push to branch
-        run: git push origin edge
+        env:
+          BRANCH_NAME: ${{ github.head_ref }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $remote_repo="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${$GITHUB_REPOSITORY}.git"
+          git push $remote_repo staging
 
   backmerge_master_into_staging:
     runs-on: ubuntu-latest
@@ -36,4 +41,9 @@ jobs:
           git config --local user.name "GitHub Action"
           git pull -r origin master
       - name: Push to branch
-        run: git push origin edge
+        env:
+          BRANCH_NAME: ${{ github.head_ref }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $remote_repo="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${$GITHUB_REPOSITORY}.git"
+          git push $remote_repo staging
