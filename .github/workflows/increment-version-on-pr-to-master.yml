@@ -45,7 +45,6 @@ jobs:
           npm version $(echo $BRANCH_NAME | grep -o [0-9\.] | xargs |  sed 's/ //g')
 
       - name: Push to branch
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.head_ref }}
+        env:
+          BRANCH_NAME: ${{ github.head_ref }}
+        run: git push origin $BRANCH_NAME
