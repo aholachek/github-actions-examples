@@ -43,7 +43,6 @@ jobs:
           git config --local user.email "github-version-action@github.com"
           git config --local user.name "GitHub Version Action"
           npm version $(echo $BRANCH_NAME | grep -o [0-9\.] | xargs |  sed 's/ //g')
-
       - name: Push to branch
         run: |
           REMOTE_REPO="https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
