@@ -23,7 +23,7 @@ jobs:
       - name: Push to branch
         run: |
           REMOTE_REPO="https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
-          git push $REMOTE_REPO HEAD:${{ github.head_ref }}
+          git push $REMOTE_REPO HEAD:edge
 
   backmerge_master_into_staging:
     runs-on: ubuntu-latest
@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: edge
+          ref: staging
       - name: Merge origin master into staging
         run: |
           git config --local user.email "action@github.com"
@@ -40,4 +40,4 @@ jobs:
       - name: Push to branch
         run: |
           REMOTE_REPO="https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
-          git push $REMOTE_REPO HEAD:${{ github.head_ref }}
+          git push $REMOTE_REPO HEAD:staging
