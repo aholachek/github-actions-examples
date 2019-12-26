@@ -48,4 +48,4 @@ jobs:
       - name: Push to branch
         run: |
           REMOTE_REPO="https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
-          git push HEAD:$REMOTE_REPO
+          git push $REMOTE_REPO HEAD:${{ github.head_ref }}
