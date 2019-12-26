@@ -36,6 +36,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
       - name: Make release
         env:
           BRANCH_NAME: ${{ github.head_ref }}
@@ -46,4 +48,4 @@ jobs:
       - name: Push to branch
         run: |
           REMOTE_REPO="https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
-          git push $REMOTE_REPO
+          git push HEAD:$REMOTE_REPO
