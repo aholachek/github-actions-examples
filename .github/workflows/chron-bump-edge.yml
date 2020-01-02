@@ -16,8 +16,6 @@ jobs:
           git fetch origin
           git merge origin/edge
       - name: Push changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           REMOTE_REPO="https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
           git push $REMOTE_REPO  HEAD:staging
