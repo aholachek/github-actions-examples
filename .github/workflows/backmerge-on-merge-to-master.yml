@@ -7,7 +7,6 @@ on:
       - master
 
 jobs:
-
   backmerge_master_into_edge:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged
@@ -15,11 +14,12 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: edge
+          fetch-depth: 0
       - name: Merge master into edge
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git pull -r origin master
+          git pull origin master
       - name: Push to branch
         run: |
           REMOTE_REPO="https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
@@ -32,11 +32,12 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: staging
+          fetch-depth: 0
       - name: Merge origin master into staging
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git pull -r origin master
+          git pull origin master
       - name: Push to branch
         run: |
           REMOTE_REPO="https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
